@@ -1,11 +1,3 @@
-
-
 export const App = () => {
-
-
-  return (
-  <h1>Ola!!!</h1>
-  )
-}
-
-
+  return <h1>Teste!!!</h1>;
+};
