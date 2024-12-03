@@ -1,11 +1,10 @@
 import { Avatar, Box, Divider, Drawer, Icon, List, ListItemButton, ListItemIcon, ListItemText, useMediaQuery, useTheme } from "@mui/material";
-import { useDrawerContext } from "../../contexts"; //contexto personalizado para o menu do drawer 
+import { useDrawerContext } from "../../contexts";
 import { useMatch, useNavigate, useResolvedPath } from "react-router-dom";
-import { useEffect, useState } from "react";
 
 
 
-interface IMenuLateralProps {  //Interface para definir que o o componente aceita filhos
+interface IMenuLateralProps {
     children: React.ReactNode;
 }
 
