@@ -1,6 +1,7 @@
 import { Avatar, Box, Divider, Drawer, Icon, List, ListItemButton, ListItemIcon, ListItemText, useMediaQuery, useTheme } from "@mui/material";
-import { useDrawerContext } from "../../contexts";
+import { useAppThemeContext, useDrawerContext } from "../../contexts";
 import { useMatch, useNavigate, useResolvedPath } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 
 
@@ -53,6 +54,7 @@ export const MenuLateral: React.FC<IMenuLateralProps> = ({ children }) => {
     const theme = useTheme();  //hook do material para acesar o tema
     const smDown = useMediaQuery(theme.breakpoints.down('sm')); //detecta o tamanho da tela
     const { isDrawerOpen, toggleDrawerOpen, drawerOptions } = useDrawerContext();  //dados e funções personalizados
+    const { toggleTheme } = useAppThemeContext();
 
     return (
         <>
@@ -78,6 +80,18 @@ export const MenuLateral: React.FC<IMenuLateralProps> = ({ children }) => {
                             ))}
                         </List>
                     </Box>
+
+                    <Box>
+                        <List component="nav">
+                            <ListItemButton onClick={toggleTheme}>
+                                <ListItemIcon>
+                                    <Icon>dark_mode</Icon>
+                                </ListItemIcon>
+                                <ListItemText primary="Alternar Tema" />
+                            </ListItemButton>
+                        </List>
+                    </Box>
+
                 </Box>
             </Drawer>
             <Box height="100vh" marginLeft={smDown ? 0 : theme.spacing(28)}>
