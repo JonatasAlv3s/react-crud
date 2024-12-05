@@ -56,6 +56,7 @@ export const MenuLateral: React.FC<IMenuLateralProps> = ({ children }) => {
     const { isDrawerOpen, toggleDrawerOpen, drawerOptions } = useDrawerContext();  //dados e funções personalizados
     const { toggleTheme } = useAppThemeContext();
 
+
     return (
         <>
             <Drawer open={isDrawerOpen} variant={smDown ? 'temporary' : 'permanent'} onClose={toggleDrawerOpen}>
