@@ -3,5 +3,9 @@
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
-  ]
+  ],
+  "compilerOptions": {
+    "lib": ["dom", "esnext"], // Inclui APIs DOM e ESNext
+    "types": []               // Remove tipos de Node.js
+  }
 }
