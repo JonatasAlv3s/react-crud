@@ -3,14 +3,14 @@ import { Api } from "../api/axios-config";
 
 interface IListagemPessoa {
     id: number;
-    nomecompleto: string;
+    nomeCompleto: string;
     cidadeId: number;
     email: string;
 }
 
 interface IDetalhePessoa {
     id: number;
-    nomecompleto: string;
+    nomeCompleto: string;
     cidadeId: number;
     email: string;
 }
@@ -24,6 +24,7 @@ const getAll = async (page = 1, filter = ''): Promise<TPessoasComTotalCount | Er
     try {
 
         const urlRelativa = `/pessoas?_page=${page}&_limit=${Environment.LIMITE_DE_LINHAS}&nomeCompleto_like=${filter}`;
+        console.log('Requisição para a URL:', urlRelativa);
         const { data, headers } = await Api.get(urlRelativa);
 
         if (data) {
@@ -57,7 +58,7 @@ const getById = async (id: number): Promise<IDetalhePessoa | Error> => {
 const create = async (dados: Omit<IDetalhePessoa, 'id'>): Promise<number | Error> => {
     try {
 
-        const { data } = await Api.post<IDetalhePessoa>('/pessoas}', dados);
+        const { data } = await Api.post<IDetalhePessoa>('/pessoas', dados);
 
         if (data) {
             return data.id;
