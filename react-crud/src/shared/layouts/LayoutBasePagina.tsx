@@ -1,4 +1,3 @@
-import { ReactNode } from "react";
 import { Icon, IconButton, Theme, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { Box } from "@mui/system";
 import { useDrawerContext } from "../contexts";
@@ -7,7 +6,7 @@ import { useDrawerContext } from "../contexts";
 interface ILayoutbasePaginaProps {
     children: React.ReactNode;
     titulo: string;
-    barraDeFerramentas?: ReactNode;
+    barraDeFerramentas?: React.ReactNode;
 
 }
 

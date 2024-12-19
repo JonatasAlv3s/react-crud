@@ -5,6 +5,18 @@
         "nomeCompleto": "Jonatas Alves",
         "cidadeId": 1,
         "email": "Alves@gmail.com"
+    },
+    {
+        "id": 2,
+        "nomeCompleto": "Jhon Bon Jones",
+        "cidadeId": 2,
+        "email": "jones@gmail.com"
+    },
+    {
+        "id": 3,
+        "nomeCompleto": "Mac Gregory",
+        "cidadeId": 3,
+        "email": "gregory@gmail.com"
     }
 ]
 }
