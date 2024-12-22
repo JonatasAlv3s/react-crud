@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { LinearProgress, Paper, Table, TableBody, TableCell, TableContainer, TableFooter, TableHead, TableRow } from "@mui/material";
+import { LinearProgress, Pagination, Paper, Table, TableBody, TableCell, TableContainer, TableFooter, TableHead, TableRow } from "@mui/material";
 import { useSearchParams } from "react-router-dom";
 
 import { IListagemPessoa, PessoasService } from "../../shared/services/pessoas/PessoasService";
@@ -22,31 +22,32 @@ export const ListagemDePessoas: React.FC = () => {
         return searchParams.get('busca') || '';
     }, [searchParams]);
 
+    const pagina = useMemo(() => {
+        return Number(searchParams.get('pagina')) || 1;
+    }, [searchParams]);
+
+    const totalPages = useMemo(() => {
+        return Math.ceil(totalCount / Environment.LIMITE_DE_LINHAS);
+    }, [totalCount]);
+
     useEffect(() => {
         setIsLoading(true);
 
         debounce(() => {
 
-            PessoasService.getAll(1, busca)
+            PessoasService.getAll(pagina, busca)
                 .then((result) => {
                     setIsLoading(false);
                     if (result instanceof Error) {
                         alert(result.message);
                     } else {
-                        const filteredData = busca
-                            ? result.data.filter((pessoa) =>
-                                pessoa.nomeCompleto.toLowerCase().includes(busca.toLowerCase())
-                            )
-                            : result.data;
-
                         console.log(result);
-
-                        setTotalCount(filteredData.length);
-                        setRows(filteredData);
+                        setTotalCount(result.totalCount);
+                        setRows(result.data);
                     }
                 });
         });
-    }, [busca, debounce]);
+    }, [busca, debounce, pagina]);
 
     return (
         <LayoutBasePagina
@@ -56,7 +57,7 @@ export const ListagemDePessoas: React.FC = () => {
                     mostrarInputDaBusca
                     textoBotaoNovo="Nova"
                     textoDaBusca={busca}
-                    aoMudarTextoDeBusca={(texto) => setSearchParams({ busca: texto }, { replace: true })}
+                    aoMudarTextoDeBusca={(texto) => setSearchParams({ busca: texto, pagina: '1' }, { replace: true })}
                 />
             }
         >
@@ -65,7 +66,7 @@ export const ListagemDePessoas: React.FC = () => {
                     <TableHead>
                         <TableRow>
                             <TableCell>Ações</TableCell>
-                            <TableCell>ID</TableCell>
+                            <TableCell>Id</TableCell>
                             <TableCell>Nome Completo</TableCell>
                             <TableCell>Email</TableCell>
                         </TableRow>
@@ -86,13 +87,28 @@ export const ListagemDePessoas: React.FC = () => {
                     )}
 
                     <TableFooter>
-                        {isLoading && (
-                            <TableRow>
-                                <TableCell colSpan={4}>
-                                    <LinearProgress variant='indeterminate' />
-                                </TableCell>
-                            </TableRow>
-                        )}
+                        {isLoading &&
+                            (
+                                <TableRow>
+                                    <TableCell colSpan={4}>
+                                        <LinearProgress variant='indeterminate' />
+                                    </TableCell>
+                                </TableRow>
+                            )
+                        }
+                        {
+                            (totalCount > 0 && Environment.LIMITE_DE_LINHAS > 0) && (
+                                <TableRow>
+                                    <TableCell colSpan={4}>
+                                        <Pagination
+                                            page={pagina}
+                                            count={totalPages}
+                                            onChange={(_, newPage) => setSearchParams({ busca, pagina: newPage.toString() }, { replace: true })}
+                                        />
+                                    </TableCell>
+                                </TableRow>
+                            )
+                        }
                     </TableFooter>
                 </Table>
             </TableContainer>

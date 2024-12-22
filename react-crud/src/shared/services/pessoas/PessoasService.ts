@@ -27,9 +27,10 @@ const getAll = async (page = 1, filter = ''): Promise<TPessoasComTotalCount | Er
         const { data, headers } = await Api.get(urlRelativa);
 
         if (data) {
+
             return {
                 data,
-                totalCount: Number(headers['x-total-count'] || Environment.LIMITE_DE_LINHAS),
+                totalCount: Number(headers['x-total-count'] || data.length),
             };
         }
         return new Error('Erro ao listar os registros.');
@@ -82,7 +83,7 @@ const updateById = async (id: number, dados: IDetalhePessoa): Promise<void | Err
 const deleteById = async (id: number): Promise<void | Error> => {
     try {
 
-        await Api.put(`/pessoas/${id}`);
+        await Api.delete(`/pessoas/${id}`);
     } catch (error) {
         console.error(error);
         return new Error((error as { message: string }).message || 'Erro ao apagar o registro.');
