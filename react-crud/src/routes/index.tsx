@@ -1,9 +1,10 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useDrawerContext } from "../shared/contexts/DrawerContext";
 import { useEffect } from "react";
+import { Dashboard, ListagemDePessoas } from "../Pages";
 
 export const AppRoutes = () => {
-  const { toggleDrawerOpen, setDrawerOptions } = useDrawerContext();
+  const { setDrawerOptions } = useDrawerContext();
 
   useEffect(() => {
     setDrawerOptions([
@@ -11,20 +12,24 @@ export const AppRoutes = () => {
         icon: 'home',
         path: '/pagina-inicial',
         label: 'Página Inicial',
-      }
+      },
+
+      {
+        icon: 'people',
+        path: '/pessoas',
+        label: 'Pessoas',
+      },
+
     ])
-  }, []);
+  }, [setDrawerOptions]);
 
   return (
     <Routes>
-      <Route
-        path="/pagina-inicial"
-        element={
-          <Button onClick={toggleDrawerOpen} variant="contained" color="primary">
-            Drawer
-          </Button>
-        }
-      />
+      <Route path="/pagina-inicial" element={<Dashboard />} />
+
+      <Route path="/pessoas" element={<ListagemDePessoas />} />
+      {/* <Route path="/pessoas/detalhe/:id" element={<Dashboard />} /> */}
+
       <Route path="*" element={<Navigate to={"/pagina-inicial"} />} />
     </Routes>
   );
