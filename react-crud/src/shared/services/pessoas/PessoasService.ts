@@ -4,6 +4,7 @@ import { Api } from "../api/axios-config";
 export interface IListagemPessoa {
     id: number;
     nomeCompleto: string;
+    idade: number;
     cidadeId: number;
     email: string;
 }
@@ -11,27 +12,30 @@ export interface IListagemPessoa {
 export interface IDetalhePessoa {
     id: number;
     nomeCompleto: string;
+    idade: number;
     cidadeId: number;
     email: string;
 }
 
 type TPessoasComTotalCount = {
-    data: IListagemPessoa[];
-    totalCount: number;
+    data: IListagemPessoa[],
+    totalCount: number
 }
+
 
 const getAll = async (page = 1, filter = ''): Promise<TPessoasComTotalCount | Error> => {
     try {
 
-        const urlRelativa = `/pessoas?_page=${page}&_limit=${Environment.LIMITE_DE_LINHAS}&nomeCompleto_like=${filter}`;
-        const { data, headers } = await Api.get(urlRelativa);
+        const urlRelativa = `/pessoas?_page=${page}&_per_page=${Environment.LIMITE_DE_LINHAS}&nomeCompleto_like=${filter}`;
+        const { data } = await Api.get(urlRelativa);
+
 
         if (data) {
 
             return {
-                data,
-                totalCount: Number(headers['x-total-count'] || data.length),
-            };
+                data: data.data,
+                totalCount: data.pages,
+            } as TPessoasComTotalCount;
         }
         return new Error('Erro ao listar os registros.');
     } catch (error) {
@@ -74,6 +78,7 @@ const updateById = async (id: number, dados: IDetalhePessoa): Promise<void | Err
     try {
 
         await Api.put(`/pessoas/${id}`, dados);
+        return;
     } catch (error) {
         console.error(error);
         return new Error((error as { message: string }).message || 'Erro ao atualizar o registro.');
@@ -84,6 +89,7 @@ const deleteById = async (id: number): Promise<void | Error> => {
     try {
 
         await Api.delete(`/pessoas/${id}`);
+        return;
     } catch (error) {
         console.error(error);
         return new Error((error as { message: string }).message || 'Erro ao apagar o registro.');

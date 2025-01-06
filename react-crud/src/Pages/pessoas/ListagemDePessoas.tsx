@@ -28,7 +28,7 @@ export const ListagemDePessoas: React.FC = () => {
     }, [searchParams]);
 
     const totalPages = useMemo(() => {
-        return Math.ceil(totalCount / Environment.LIMITE_DE_LINHAS);
+        return Math.ceil(totalCount);
     }, [totalCount]);
 
     useEffect(() => {
@@ -38,6 +38,7 @@ export const ListagemDePessoas: React.FC = () => {
 
             PessoasService.getAll(pagina, busca)
                 .then((result) => {
+                    console.log(result);
                     setIsLoading(false);
                     if (result instanceof Error) {
                         alert(result.message);
@@ -87,8 +88,8 @@ export const ListagemDePessoas: React.FC = () => {
                     <TableHead>
                         <TableRow>
                             <TableCell>Ações</TableCell>
-                            <TableCell>Id</TableCell>
                             <TableCell>Nome Completo</TableCell>
+                            <TableCell>Idade</TableCell>
                             <TableCell>Email</TableCell>
                         </TableRow>
                     </TableHead>
@@ -103,8 +104,8 @@ export const ListagemDePessoas: React.FC = () => {
                                         <Icon>edit</Icon>
                                     </IconButton>
                                 </TableCell>
-                                <TableCell>{row.id}</TableCell>
                                 <TableCell>{row.nomeCompleto}</TableCell>
+                                <TableCell>{row.idade}</TableCell>
                                 <TableCell>{row.email}</TableCell>
                             </TableRow>
                         ))}
