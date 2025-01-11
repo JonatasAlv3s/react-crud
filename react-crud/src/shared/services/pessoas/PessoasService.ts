@@ -45,6 +45,11 @@ const getAll = async (page = 1, filter = ''): Promise<TPessoasComTotalCount | Er
 };
 
 const getById = async (id: number): Promise<IDetalhePessoa | Error> => {
+
+    if (!id || isNaN(id) || id <= 0) {
+        return new Error('ID inválido.');
+    }
+
     try {
 
         const { data } = await Api.get(`/pessoas/${id}`);
@@ -62,9 +67,11 @@ const getById = async (id: number): Promise<IDetalhePessoa | Error> => {
 const create = async (dados: Omit<IDetalhePessoa, 'id'>): Promise<number | Error> => {
     try {
 
+        console.log('Dados enviados:', dados);
+
         const { data } = await Api.post<IDetalhePessoa>('/pessoas', dados);
 
-        if (data) {
+        if (data && data.id) {
             return data.id;
         }
         return new Error('Erro ao criar o registro.');
