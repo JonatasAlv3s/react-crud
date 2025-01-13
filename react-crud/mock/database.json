@@ -141,5 +141,15 @@
       "email": "jhon@cena.com",
       "nomeCompleto": "Jhon Cena"
     }
+  ],
+  "cidades": [
+    {
+      "id": "138d",
+      "nome": "Americana"
+    },
+    {
+      "id": "c490",
+      "nome": "Limeira"
+    }
   ]
 }

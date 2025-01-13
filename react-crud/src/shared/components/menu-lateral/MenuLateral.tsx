@@ -102,3 +102,5 @@ export const MenuLateral: React.FC<IMenuLateralProps> = ({ children }) => {
     );
 }
 
+
+
