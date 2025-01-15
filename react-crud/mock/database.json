@@ -2,10 +2,10 @@
   "pessoas": [
     {
       "id": "1",
-      "nomeCompleto": "Jonatas Alves",
-      "idade": "33 anos",
+      "cidadeId": 8,
+      "idade": 33,
       "email": "Alves@gmail.com",
-      "cidadeId": "8"
+      "nomeCompleto": "Jonatas Alves"
     },
     {
       "id": "3",
@@ -16,14 +16,14 @@
     {
       "id": "4",
       "nomeCompleto": "Taisom filho",
-      "idade": "01 anos",
+      "idade": "01",
       "email": "taisom@gmail.com",
       "cidadeId": 2
     },
     {
       "id": "7",
       "nomeCompleto": "Fredd Crugger",
-      "idade": "55 anos ",
+      "idade": "55",
       "email": "fred@gmail.com",
       "cidadeId": 2
     },
@@ -42,7 +42,7 @@
     {
       "id": "12",
       "nomeCompleto": "Jonatas Alves",
-      "idade": "33 anos ",
+      "idade": "33",
       "email": "Alves@gmail.com",
       "cidadeId": 1
     },
@@ -67,70 +67,70 @@
     {
       "id": "66e6",
       "nomeCompleto": "Spider Man",
-      "idade": "18 anos ",
+      "idade": "18",
       "email": "spider@marvel.com",
       "cidadeId": "3"
     },
     {
       "id": "d705",
       "nomeCompleto": "Peter Park",
-      "idade": "18 anos ",
+      "idade": "18",
       "email": "peter@gmail.com",
       "cidadeId": "2"
     },
     {
       "id": "d50f",
       "nomeCompleto": "Jose carlos",
-      "idade": "56 anos ",
+      "idade": "56",
       "email": "josecarlos@gmail.com",
       "cidadeId": "3"
     },
     {
       "id": "b31e",
       "nomeCompleto": "Peter Jordan",
-      "idade": "43 anos ",
+      "idade": "43",
       "email": "peter@gmail.com",
       "cidadeId": "9"
     },
     {
       "id": "2e63",
       "nomeCompleto": "Estelar ",
-      "idade": "130 anos ",
+      "idade": "130",
       "email": "estelar@dc.com",
       "cidadeId": "10"
     },
     {
       "id": "3fa1",
       "nomeCompleto": "Steve Halk",
-      "idade": "56 anos ",
+      "idade": "56",
       "email": "steve@gmail.com",
       "cidadeId": "6"
     },
     {
       "id": "cb0a",
       "nomeCompleto": "Steve Jobs",
-      "idade": "58 anos",
+      "idade": "58",
       "email": "jobs@gmail.com",
       "cidadeId": "4"
     },
     {
       "id": "e5c3",
       "nomeCompleto": "Bell Gates",
-      "idade": "58 anos ",
+      "idade": "58",
       "email": "gates@microsoft.com",
       "cidadeId": "1"
     },
     {
       "id": "b7cd",
       "nomeCompleto": "Silvester Stalone",
-      "idade": "62 anos ",
+      "idade": "62",
       "email": "stalone@gmail.com",
       "cidadeId": "7"
     },
     {
       "id": "7c10",
       "nomeCompleto": "Tony Stark",
-      "idade": "35 anos",
+      "idade": "35",
       "email": "tony@marvel.com",
       "cidadeId": "3"
     },
@@ -150,6 +150,22 @@
     {
       "id": "c490",
       "nome": "Limeira"
+    },
+    {
+      "id": "05c4",
+      "nome": "Sumaré "
+    },
+    {
+      "id": "a31c",
+      "nome": "Campinas "
+    },
+    {
+      "id": "61a6",
+      "nome": "Piracicaba"
+    },
+    {
+      "id": "6375",
+      "nome": "Nova Odessa"
     }
   ]
 }

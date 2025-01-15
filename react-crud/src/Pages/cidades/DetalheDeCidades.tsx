@@ -14,6 +14,7 @@ import { IVFormErrors } from "../../shared/forms/IVFormErrors";
 
 interface IFormData {
     nome: string;
+    cidadeId?: number;
 }
 
 const formValidationSchema: yup.Schema<IFormData> = yup.object().shape({
