@@ -167,5 +167,8 @@
       "id": "6375",
       "nome": "Nova Odessa"
     }
-  ]
+  ], 
+  "auth": {
+    "accessToken": "abcde.abcde.abcde" 
+  }
 }
