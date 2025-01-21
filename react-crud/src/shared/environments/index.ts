@@ -18,4 +18,5 @@ export const Environment = {
      * Url base de consulta dos dados dessa aplicação. 
      */
     URL_BASE: 'http://localhost:3333',
+    //URL_BASE: 'https://n0isrx5qib.execute-api.us-east-1.amazonaws.com',
 };

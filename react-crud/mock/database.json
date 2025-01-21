@@ -144,10 +144,6 @@
   ],
   "cidades": [
     {
-      "id": "138d",
-      "nome": "Americana"
-    },
-    {
       "id": "c490",
       "nome": "Limeira"
     },
@@ -166,9 +162,13 @@
     {
       "id": "6375",
       "nome": "Nova Odessa"
+    },
+    {
+      "id": "a899",
+      "nome": "Jurere"
     }
-  ], 
+  ],
   "auth": {
-    "accessToken": "abcde.abcde.abcde" 
+    "accessToken": "abcde.abcde.abcde"
   }
 }
